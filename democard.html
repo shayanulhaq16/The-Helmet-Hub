@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - The helmet Hub - Super Market - By Nasr</title>
+    <link rel="stylesheet" href="democard.css">
+</head>
+
+<body>
+
+    <div class="complete-body-container">
+
+        <!-- ================= HEADER ================= -->
+        <header class="top-header">
+            <a href="#" class="logo">
+                <span class="logo-icon">🪖</span> The helmet <span>Hub</span>
+            </a>
+
+            <div class="search-box">
+                <input type="text" placeholder="Search helmet, accessories, tech...">
+                <button class="search-btn">🔍</button>
+            </div>
+
+            <div class="header-actions">
+                <a href="#" class="header-action">
+                    <span class="icon">👤</span>
+                    <span>Account</span>
+                </a>
+                <a href="#" class="header-action">
+                    <span class="icon">🤍</span>
+                    <span>Wishlist</span>
+                </a>
+                <a href="#" class="header-action cart">
+                    <span class="icon">🛒</span>
+                    <span>Cart</span>
+                    <span class="cart-count" id="headerCartCount">4</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- ================= NAVIGATION ================= -->
+        <nav class="navigation">
+            <div class="categories">
+                <span>☰</span> All Categories
+            </div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Shop</a>
+                <a href="#">Helmets</a>
+                <a href="#">Deals</a>
+                <a href="#" class="active">Shopping Cart</a>
+            </div>
+        </nav>
+
+        <!-- ================= MAIN CONTENT ================= -->
+        <main class="main-content">
+
+            <div class="breadcrumb">
+                <a href="#">Home</a> &nbsp;/&nbsp; <a href="#">Shop</a> &nbsp;/&nbsp; Shopping Cart
+            </div>
+
+            <div class="page-title">
+                <h2>Shopping Cart (<span id="cartItemCount">4</span> items)</h2>
+                <button class="btn-secondary" onclick="clearCart()" id="clearCartBtn">Clear Cart</button>
+            </div>
+
+            <!-- 2-COLUMN CART LAYOUT -->
+            <div class="cart-grid" id="cartContent">
+
+                <!-- Left Column: Items Table -->
+                <div class="cart-container">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th class="hide-mobile">Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartTableBody">
+                            <!-- Item 1 -->
+                            <tr data-id="1" data-price="129.99">
+                                <td>
+                                    <div class="product-info">
+                                        <div class="product-img">🪖</div>
+                                        <div class="product-details">
+                                            <div class="title">Pro Protection Riding Helmet</div>
+                                            <div class="meta">Color: Matte Black | Size: L</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="unit-price hide-mobile">$129.99</td>
+                                <td>
+                                    <div class="qty-picker">
+                                        <button class="qty-btn" onclick="updateQty(1, -1)">-</button>
+                                        <input type="text" class="qty-input" value="1" readonly>
+                                        <button class="qty-btn" onclick="updateQty(1, 1)">+</button>
+                                    </div>
+                                </td>
+                                <td class="item-total">$129.99</td>
+                                <td>
+                                    <button class="remove-btn" onclick="removeItem(1)" title="Remove item">✕</button>
+                                </td>
+                            </tr>
+
+                            <!-- Item 2 -->
+                            <tr data-id="2" data-price="79.50">
+                                <td>
+                                    <div class="product-info">
+                                        <div class="product-img">🎧</div>
+                                        <div class="product-details">
+                                            <div class="title">Wireless Bluetooth Helmet Headset</div>
+                                            <div class="meta">Noise Canceller | Waterproof</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="unit-price hide-mobile">$79.50</td>
+                                <td>
+                                    <div class="qty-picker">
+                                        <button class="qty-btn" onclick="updateQty(2, -1)">-</button>
+                                        <input type="text" class="qty-input" value="1" readonly>
+                                        <button class="qty-btn" onclick="updateQty(2, 1)">+</button>
+                                    </div>
+                                </td>
+                                <td class="item-total">$79.50</td>
+                                <td>
+                                    <button class="remove-btn" onclick="removeItem(2)" title="Remove item">✕</button>
+                                </td>
+                            </tr>
+
+                            <!-- Item 3 -->
+                            <tr data-id="3" data-price="199.00">
+                                <td>
+                                    <div class="product-info">
+                                        <div class="product-img">⌚</div>
+                                        <div class="product-details">
+                                            <div class="title">Smart Sports Watch Series 7</div>
+                                            <div class="meta">GPS + Health Monitor</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="unit-price hide-mobile">$199.00</td>
+                                <td>
+                                    <div class="qty-picker">
+                                        <button class="qty-btn" onclick="updateQty(3, -1)">-</button>
+                                        <input type="text" class="qty-input" value="1" readonly>
+                                        <button class="qty-btn" onclick="updateQty(3, 1)">+</button>
+                                    </div>
+                                </td>
+                                <td class="item-total">$199.00</td>
+                                <td>
+                                    <button class="remove-btn" onclick="removeItem(3)" title="Remove item">✕</button>
+                                </td>
+                            </tr>
+
+                            <!-- Item 4 -->
+                            <tr data-id="4" data-price="45.00">
+                                <td>
+                                    <div class="product-info">
+                                        <div class="product-img">🎒</div>
+                                        <div class="product-details">
+                                            <div class="title">Ergonomic Rider Backpack</div>
+                                            <div class="meta">Capacity: 25L | Raincover Included</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="unit-price hide-mobile">$45.00</td>
+                                <td>
+                                    <div class="qty-picker">
+                                        <button class="qty-btn" onclick="updateQty(4, -1)">-</button>
+                                        <input type="text" class="qty-input" value="2" readonly>
+                                        <button class="qty-btn" onclick="updateQty(4, 1)">+</button>
+                                    </div>
+                                </td>
+                                <td class="item-total">$90.00</td>
+                                <td>
+                                    <button class="remove-btn" onclick="removeItem(4)" title="Remove item">✕</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="cart-actions">
+                        <div class="coupon-box">
+                            <input type="text" id="couponCode" class="coupon-input"
+                                placeholder="Promo code (e.g. SUMMER50)">
+                            <button class="btn-apply" onclick="applyCoupon()">Apply</button>
+                        </div>
+                        <a href="#" class="btn-secondary">← Continue Shopping</a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Order Summary Card -->
+                <div class="summary-card">
+                    <h3 class="summary-title">Order Summary</h3>
+
+                    <div class="shipping-progress">
+                        <div class="shipping-text" id="shippingText">🎉 You qualify for FREE Shipping!</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="shippingProgress" style="width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotalAmount">$498.49</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Estimated Shipping</span>
+                        <span id="shippingAmount" style="color: #16a34a; font-weight: 600;">FREE</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Estimated Tax (5%)</span>
+                        <span id="taxAmount">$24.92</span>
+                    </div>
+
+                    <div class="summary-row discount" id="discountRow" style="display: none;">
+                        <span>Discount (SUMMER50)</span>
+                        <span id="discountAmount">-$0.00</span>
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="grandTotal">$523.41</span>
+                    </div>
+
+                    <button class="btn-checkout" onclick="checkout()">Proceed to Checkout →</button>
+
+                    <div class="trust-badges">
+                        <div class="trust-item">
+                            <span class="trust-icon">🛡️</span>
+                            <span>100% Safe & Secure Payments</span>
+                        </div>
+                        <div class="trust-item">
+                            <span class="trust-icon">🚚</span>
+                            <span>Fast & Reliable Express Delivery</span>
+                        </div>
+                        <div class="trust-item">
+                            <span class="trust-icon">↩️</span>
+                            <span>Hassle-free 30 Days Return Policy</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- EMPTY CART STATE -->
+            <div class="empty-cart-state" id="emptyCartState">
+                <div class="empty-cart-icon">🛒</div>
+                <h3>Your Cart is Currently Empty</h3>
+                <p>Looks like you haven't added any premium products to your cart yet.</p>
+                <a href="#" class="btn-checkout" style="display: inline-block; width: auto; padding: 12px 28px;">Start
+                    Shopping Now</a>
+            </div>
+
+        </main>
+
+        <!-- ================= FOOTER ================= -->
+        <footer>
+            <div class="footer-logo">
+                <span>🪖</span> The helmet Hub
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Shipping Details</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="copyright">
+                © 2026 The helmet Hub - Super Market - By Nasr. All Rights Reserved.
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
