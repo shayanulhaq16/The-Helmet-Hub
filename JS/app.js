@@ -46,25 +46,3 @@ const displayData = async () => {
 
 displayData();
 
-const headerContainer = document.querySelector(".display-header");
-
-const displayHeader = async () => {
-    const response = await fetch("../header-footer/header.html");
-    const header = await response.text();
-
-    headerContainer.innerHTML = header;
-};
-
-displayHeader();
-
-const footerContainer = document.querySelector(".display-footer");
-
-const displayFooter = async () => {
-
-    const footerData = await fetch("../header-footer/footer.html");
-    const footer = await footerData.text();
-
-    footerContainer.innerHTML = footer;
-}
-
-displayFooter();
